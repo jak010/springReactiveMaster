@@ -14,6 +14,9 @@ import java.util.Random;
 public class KitchenService {
 
     public Flux<Dish> getDishes() {
+        /*
+        *  250 밀리초 동안 데이터를  랜덤 발생하여 전달함
+        * */
         return Flux.<Dish>generate(sink -> sink.next(randomDish())).delayElements(Duration.ofMillis(250));
     }
 
