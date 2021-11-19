@@ -1,11 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>스프링 부트 실전활용 마스터 </title>
+    <meta charset="UTF-8"/>
+    <title>Hacking with Spring Boot - Getting Started</title>
 </head>
 <body>
-스프링 부트 실전활용 마스터 실습용 코드
+<h1>2장 테스트 임 </h1>
+
+<!-- tag::1[] -->
+<h2>Inventory Management</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.price}"></td>
+        <td>
+            <form method="post" th:action="@{'/add/' + ${item.id}}">
+                <input type="submit" value="Add to Cart"/>
+            </form>
+        </td>
+        <td>
+            <form th:method="delete" th:action="@{'/delete/' + ${item.id}}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<!-- end::1[] -->
+
+<!-- tag::2[] -->
+<h2>My Cart</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cartItem : ${cart.cartItems}">
+        <td th:text="${cartItem.item.id}"></td>
+        <td th:text="${cartItem.item.name}"></td>
+        <td th:text="${cartItem.quantity}"></td>
+    </tr>
+    </tbody>
+</table>
+<!-- end::2[] -->
 
 </body>
 </html>
