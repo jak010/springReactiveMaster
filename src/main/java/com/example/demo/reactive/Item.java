@@ -9,7 +9,7 @@ public class Item {
     /* 판매상품 데이터 */
 
 
-    public @Id String id;
+    public @Id String id; /* public 처리 안해주면 thymeleaf 에서 표출 안됨 */
     private String name;
     private double price;
 
