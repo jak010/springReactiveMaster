@@ -5,10 +5,11 @@
     <title>Hacking with Spring Boot - Getting Started</title>
 </head>
 <body>
-<h1>2장 테스트 임 </h1>
+<h1>Welcome to Hacking with Spring Boot!</h1>
 
 <!-- tag::1[] -->
 <h2>Inventory Management</h2>
+
 <table>
     <thead>
     <tr>
@@ -18,13 +19,14 @@
     </tr>
     </thead>
     <tbody>
+<!--    <div th:text="${items}"></div>-->
     <tr th:each="item : ${items}">
         <td th:text="${item.id}"></td>
         <td th:text="${item.name}"></td>
         <td th:text="${item.price}"></td>
         <td>
             <form method="post" th:action="@{'/add/' + ${item.id}}">
-                <input type="submit" value="Add to Cart"/>
+                <input type="submit" value="Add to Cart" />
             </form>
         </td>
         <td>
